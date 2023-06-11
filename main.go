@@ -17,27 +17,27 @@ func main() {
 
 	for {
 		fmt.Println("\nMenu:")
-		fmt.Println("1. Tambahkan tugas")
-		fmt.Println("2. Tampilkan daftar tugas")
-		fmt.Println("3. Tandai tugas sebagai selesai")
-		fmt.Println("4. Hapus tugas")
-		fmt.Println("0. Keluar")
+		fmt.Println("1. Add a task")
+		fmt.Println("2. Show task list")
+		fmt.Println("3. Mark the task as complete")
+		fmt.Println("4. Delete task")
+		fmt.Println("0. Exit")
 
-		fmt.Print("Pilih menu: ")
+		fmt.Print("Select a menu: ")
 		option, _ := reader.ReadString('\n')
 
 		switch option {
 		case "1\n":
-			fmt.Print("Masukkan tugas: ")
+			fmt.Print("Enter a task: ")
 			task, _ := reader.ReadString('\n')
 			tasks = append(tasks, task)
-			fmt.Println("Tugas berhasil ditambahkan.")
+			fmt.Println("Task added successfully.")
 
 		case "2\n":
 			if len(tasks) == 0 {
-				fmt.Println("Tidak ada tugas dalam daftar.")
+				fmt.Println("There are no tasks in the list.")
 			} else {
-				fmt.Println("Daftar Tugas:")
+				fmt.Println("Task List:")
 				for i, task := range tasks {
 					fmt.Printf("%d. %s", i+1, task)
 				}
@@ -45,40 +45,40 @@ func main() {
 
 		case "3\n":
 			if len(tasks) == 0 {
-				fmt.Println("Tidak ada tugas dalam daftar.")
+				fmt.Println("There are no tasks in the list.")
 			} else {
-				fmt.Print("Pilih nomor tugas yang telah selesai: ")
+				fmt.Print("Select the completed task number: ")
 				var num int
 				fmt.Scanln(&num)
 				if num >= 1 && num <= len(tasks) {
 					tasks = append(tasks[:num-1], tasks[num:]...)
-					fmt.Println("Tugas berhasil ditandai sebagai selesai.")
+					fmt.Println("The task is successfully marked as complete.")
 				} else {
-					fmt.Println("Nomor tugas tidak valid.")
+					fmt.Println("Invalid assignment number.")
 				}
 			}
 
 		case "4\n":
 			if len(tasks) == 0 {
-				fmt.Println("Tidak ada tugas dalam daftar.")
+				fmt.Println("There are no tasks in the list.")
 			} else {
-				fmt.Print("Pilih nomor tugas yang ingin dihapus: ")
+				fmt.Print("Select the task number you want to delete: ")
 				var num int
 				fmt.Scanln(&num)
 				if num >= 1 && num <= len(tasks) {
 					tasks = append(tasks[:num-1], tasks[num:]...)
-					fmt.Println("Tugas berhasil dihapus.")
+					fmt.Println("Task deleted successfully.")
 				} else {
-					fmt.Println("Nomor tugas tidak valid.")
+					fmt.Println("Invalid assignment number.")
 				}
 			}
 
 		case "0\n":
-			fmt.Println("Terima kasih telah menggunakan To-Do List CLI.")
+			fmt.Println("Thank you for using To-Do List CLI.")
 			return
 
 		default:
-			fmt.Println("Pilihan tidak valid.")
+			fmt.Println("Invalid choice.")
 		}
 	}
 }
